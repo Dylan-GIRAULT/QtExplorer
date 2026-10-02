@@ -159,10 +159,10 @@ void QtExplorer::showContextMenu(const QPoint &pos) {
 
     QMenu menu(this);
 
-    QAction* openAction = menu.addAction("&Ouvrir");
-    QAction* renameAction = menu.addAction("&Renommer");
+    QAction* openAction = menu.addAction("&Open");
+    QAction* renameAction = menu.addAction("&Rename");
     menu.addSeparator();
-    QAction* deleteAction = menu.addAction("&Supprimer");
+    QAction* deleteAction = menu.addAction("&Delete");
 
 
     QAction* selectedAction = menu.exec(
@@ -182,8 +182,7 @@ void QtExplorer::showContextMenu(const QPoint &pos) {
         while(!ok) {
             QString newName = QInputDialog::getText(this, tr("QtExplorer"), tr("Write a new name : "), QLineEdit::Normal, fileInfo.fileName(), &ok);
             if(!ok) {
-                QMessageBox::warning(this, "Warning", "Name is invalid");
-                continue;
+                break;
             }
             if(fileInfo.fileName() != newName) {
                 ok = QFile::rename(filePath, fileInfo.dir().absoluteFilePath(newName));

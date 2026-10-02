@@ -51,12 +51,12 @@ void FileWidget::setFileInfo(const QFileInfo& pFileInfo) {
     else {
         labelSize->hide();
     }
-    labelDate->setText(fileInfo.lastModified().toString("dd/MM/yyyy HH:mm"));
+    labelDate->setText(fileInfo.lastModified().toString("MM/dd/yyyy HH:mm"));
 
     update();
 }
 
-QString FileWidget::octet_to_string(int octet) const {
+QString FileWidget::octet_to_string(qint64 octet) const {
     int count = 0;
     const QString tab[5] { "octet", "Ko", "Mo", "Go", "To"};
 
